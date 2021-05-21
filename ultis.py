@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import numpy as np
+import os
 from sklearn.metrics import confusion_matrix
 
 def json_to_dict(filename):
@@ -55,3 +56,8 @@ def sen_spec(dic):
         performance[key] = {'sensitivity':sensitivity, 'specificity':specificity}
     return performance
 
+def create_folder(path, file):
+    if not os.path.isdir(path):
+        os.mkdir(path)
+        file.save(path)
+        
